@@ -17,8 +17,8 @@ export const CommentCreate = ({ postId }) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <div className="form-gorup">
-          <label>New Comment {postId}</label>
+        <div>
+          <label>New Comment</label>
           <input
             value={content}
             onChange={(e) => setContent(e.target.value)}
