@@ -1,5 +1,6 @@
 const express = require("express");
 const { randomBytes } = require("crypto");
+const cors = require('cors')
 
 const app = express();
 app.use(express.json());
@@ -8,6 +9,7 @@ app.use(
     extended: true,
   })
 );
+app.use(cors());
 
 /**
  *  '35p5[j' : [ { id: 'j325', content: 'great post' }, ... ]
