@@ -4,13 +4,31 @@
     Just a taste of microservice. !! NOT FOR PRODUCTION !!
 
 
-# Architechure of Front-End components
+# Architechure
+## Front-End components
 ```mermaid
 graph TD
     A[App] --> B[PostList]
     A[App] --> C[PostCreate]
     B --> D[CommentList]
     B --> E[CommentCreate]
+```
+
+## Back-End services 
+```mermaid
+graph LR
+    subgraph Services
+    A[Posts Service 4000]
+    B[Comments Service 4001]
+    C[Query Service 4002]
+    end
+    subgraph Event
+    D[Event Bus]
+    end
+    A --> |create|D
+    B --> |create| D
+    D -.-> |event|A & B & C 
+    E(Client) --> |fetch data|C
 ```
 
 # Notes
@@ -55,6 +73,7 @@ graph LR
 
 Pros
 - Query Service has zero dependencies on other services!
+  - Meaning that event if others services is dead, your client react app works still!
 - Query Service will be extremely fast!
 
 Cons
